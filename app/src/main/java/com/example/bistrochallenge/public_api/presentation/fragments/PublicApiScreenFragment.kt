@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.bistrochallenge.R
+import com.example.bistrochallenge.databinding.FragmentPublicApiScreenBinding
 import com.example.bistrochallenge.public_api.presentation.viewmodels.PublicApiScreenViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PublicApiScreenFragment : Fragment() {
 
     companion object {
@@ -17,16 +21,34 @@ class PublicApiScreenFragment : Fragment() {
 
     private val viewModel: PublicApiScreenViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
+    private lateinit var _binding: FragmentPublicApiScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_public_api_screen, container, false)
+        _binding = FragmentPublicApiScreenBinding.inflate(inflater, container, false)
+        handleObservables()
+        handleListeners()
+        return _binding.root
     }
+
+    private fun handleListeners() {
+        _binding.fetchButton.setOnClickListener {
+            viewModel.fetchImage()
+        }
+    }
+
+    private fun handleObservables() {
+        viewModel.imageUrl.observe(viewLifecycleOwner) { imageUrl ->
+            Glide.with(this)
+                .load(imageUrl)
+                .placeholder(android.R.drawable.progress_indeterminate_horizontal)
+                .error(android.R.drawable.stat_notify_error)
+                .centerCrop()
+                .into(_binding.imageView)
+
+        }
+    }
+
 }

@@ -59,6 +59,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.glide)
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+    implementation(libs.retrofit)
+    implementation (libs.converter.gson)
+
 }
 
 // Allow references to generated code
