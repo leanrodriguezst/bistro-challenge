@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">BistroChallenge</string>
+    <string name="title_factorial">Factorial</string>
+    <string name="title_public_api">API Pública</string>
+    <string name="title_logger">Registro</string>
+</resources>

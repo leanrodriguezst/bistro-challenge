@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.bistrochallenge.factorial.presentation.fragments.FactorialScreenFragment"
+        android:label="@string/title_factorial"
+        tools:layout="@layout/fragment_factorial_screen" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.bistrochallenge.public_api.presentation.fragments.PublicApiScreenFragment"
+        android:label="@string/title_public_api"
+        tools:layout="@layout/fragment_public_api_screen" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.bistrochallenge.logger.presentation.fragments.LoggerScreenFragment"
+        android:label="@string/title_logger"
+        tools:layout="@layout/fragment_logger_screen" />
+</navigation>
