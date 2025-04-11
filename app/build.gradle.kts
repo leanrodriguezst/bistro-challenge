@@ -64,6 +64,12 @@ dependencies {
     implementation(libs.retrofit)
     implementation (libs.converter.gson)
 
+    implementation(libs.androidx.room.runtime)
+    val room_version = "2.7.0"
+    kapt("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+
 }
 
 // Allow references to generated code
